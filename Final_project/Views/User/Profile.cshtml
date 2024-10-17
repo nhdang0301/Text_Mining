@@ -1,0 +1,48 @@
+﻿@model Final_project.User
+<h4 style="color: #ff7f50;">User Information</h4>
+<div class="profile-container">
+    <div class="avatar-section">
+        <h3>Avatar</h3>
+        <!-- Khung avatar -->
+        @if (Model.AvatarUrl != null)
+        {
+            <img src="@Model.AvatarUrl" alt="Avatar" class="avatar-img" />
+        }
+        else
+        {
+            <img src="https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg" alt="Default Avatar" class="avatar-img" />
+        }
+
+        <!-- Form upload avatar -->
+        <form action="@Url.Action("UploadAvatar", "User")" method="post" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="avatar" id="avatar-upload" />
+            <label for="avatar-upload" class="btn-upload">Choose File</label>
+            <input type="submit" value="Upload Avatar" class="btn-upload-avatar" />
+        </form>
+    </div>
+
+    <div class="info-section">
+        <h3>Personal Information</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Full Name</th>
+                <td>@Model.FirstName @Model.LastName</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>@Model.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>@Model.Address</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Gắn file CSS riêng -->
+<link rel="stylesheet" href="~/Content/Profile.css" />

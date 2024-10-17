@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Final_project.Models.WishlistViewModel>
+
+@{
+    ViewBag.Title = "Wishlist";
+}
+
+<div class="container my-5">
+    <h4 class="text-center mb-4">Your Wishlist</h4>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Stock Status</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="~/assets/images/shop/@item.ImageUrl" alt="@item.ProductName" class="img-thumbnail me-3" style="width: 50px;">
+                                <span>@item.ProductName</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="text-danger ms-2">€@item.Price</span>
+                        </td>
+                        <td>
+                            <!-- Giả sử sản phẩm luôn còn hàng -->
+                            <span class="badge bg-success">In Stock</span>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="btn btn-default add-to-cart" data-product-id="@item.ProductID">
+                                <i class="fa fa-shopping-cart"></i> Add to cart
+                            </a>
+                        </td>
+                        <td>
+                            <button class="remove-btn" onclick="removeFromWishlist(@item.ProductID)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function removeFromWishlist(productId) {
+        if (confirm('Are you sure you want to remove this product from your wishlist?')) {
+            window.location.href = '@Url.Action("RemoveFromWishlist", "User")' + '?id=' + productId;
+        }
+    }
+</script>

@@ -1,0 +1,7 @@
+.vs/
+*.log
+*.tmp
+build/
+*.exe
+*.dll
+.DS_Store

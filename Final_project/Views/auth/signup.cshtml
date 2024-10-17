@@ -1,0 +1,72 @@
+﻿@model Final_project.Models.SignupViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="custom-auth-wrapper">
+    <div class="custom-auth-page">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Sign Up</h2>
+
+                <!-- Hiển thị thông báo lỗi tổng quát nếu có -->
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        Please check the information below!
+                    </div>
+                }
+
+                <form action="@Url.Action("signup", "auth")" method="post">
+                    <div class="flex-container">
+                        <div class="textbox">
+                            <i class="bi bi-person"></i>
+                            <input type="text" name="FirstName" placeholder="First Name" required>
+                            <!-- Hiển thị lỗi cho FirstName -->
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="textbox">
+                            <i class="bi bi-person"></i>
+                            <input type="text" name="LastName" placeholder="Last Name" required>
+                            <!-- Hiển thị lỗi cho LastName -->
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" name="Email" placeholder="Email Address" required>
+                        <!-- Hiển thị lỗi cho Email -->
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-telephone"></i>
+                        <input type="tel" name="PhoneNumber" placeholder="Phone Number" required>
+                        <!-- Hiển thị lỗi cho PhoneNumber -->
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-house"></i>
+                        <input type="text" name="Address" placeholder="Your Address" required>
+                        <!-- Hiển thị lỗi cho Address -->
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" name="Password" placeholder="Password" required>
+                        <!-- Hiển thị lỗi cho Password -->
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" name="ConfirmPassword" placeholder="Confirm Password" required>
+                        <!-- Hiển thị lỗi cho ConfirmPassword -->
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <p>Already have an account?</p>
+                    <p>@Html.ActionLink("LOGIN", "login", "auth")</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

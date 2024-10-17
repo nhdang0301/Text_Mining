@@ -1,0 +1,61 @@
+﻿@model Final_project.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="custom-auth-wrapper">
+    <div class="custom-auth-page">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Login</h2>
+
+                <!-- Hiển thị thông báo thành công nếu có -->
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+
+                <!-- Hiển thị lỗi nếu có -->
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        Incorrect username or password. Please try again.
+                    </div>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+
+
+                <form action="@Url.Action("login", "auth")" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="textbox">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" name="Email" placeholder="Email" required>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textbox">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" name="Password" placeholder="Password" required>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="forgot-password">
+                        <a href="@Url.Action("ForgotPassword", "auth")">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn">LOGIN</button>
+                    <p>Or Sign Up Using</p>
+                    <div class="social-buttons">
+                        <a href="@Url.Action("LoginWithFacebook", "Account")"><i class="fab fa-facebook-f"></i></a>
+                        <a href="@Url.Action("LoginWithGoogle", "Account")"><i class="fab fa-google"></i></a>
+                    </div>
+                    <p>@Html.ActionLink("SIGN UP", "signup", "auth")</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
