@@ -1,6 +1,7 @@
 ﻿using Final_project.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,5 +29,55 @@ namespace Final_project.Controllers
 
             return View(model); // Truyền ViewModel vào view
         }
+
+        public ActionResult CategoryTabsPartial()
+        {
+            // Lấy danh sách các loại sản phẩm từ database
+            var categories = db.ProductCategories.ToList();
+
+            var products = new List<Product>();
+            foreach (var category in categories.Take(6))
+            {
+                var productsByCategory = db.Products
+                                           .Where(p => p.CategoryID == category.CategoryID)
+                                           .OrderBy(p => Guid.NewGuid())
+                                           .Take(4)
+                                           .ToList();
+                products.AddRange(productsByCategory);
+            }
+
+            // Tạo ViewModel để chứa danh sách danh mục và sản phẩm
+            var model = new ProductCategoryTestViewModel
+            {
+                Categories = categories,
+                Products = products
+            };
+
+            return PartialView("_CategoryTabs", model);
+        }
+        public ActionResult ProductCategory()
+        {
+            // Lấy danh sách category từ database
+            var categories = db.ProductCategories.ToList();
+
+            // Tạo ProductCategoryViewModel
+            var productCategoryViewModel = new ProductCategoryViewModel
+            {
+                Categories = categories,
+                SelectedCategory = "", // Có thể xử lý để chọn category hiện tại nếu cần
+                MinPrice = 0,
+                MaxPrice = 2000
+            };
+
+            // Trả về PartialView trực tiếp với ProductCategoryViewModel
+            return PartialView("_ProductCategoryPartial", productCategoryViewModel);
+        }
+
+
+
+
+
+
+
     }
 }

@@ -1,0 +1,52 @@
+﻿@model Final_project.Models.ProductCategoryTestViewModel
+
+<div class="category-tab">
+    <!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            @if (Model.Categories != null && Model.Categories.Any())
+            {
+                bool isFirst = true;
+                foreach (var category in Model.Categories.Take(6))
+                {
+                    <li class="@(isFirst ? "active" : "")">
+                        <a href="#@category.CategoryName.ToLower().Replace(" ", "-").Replace(".", "").Replace("/", "").Replace("'", "")" data-toggle="tab">@category.CategoryName</a>
+                    </li>
+                    isFirst = false;
+                }
+            }
+        </ul>
+    </div>
+    <div class="tab-content">
+        @if (Model.Categories != null && Model.Categories.Any())
+        {
+            bool isFirstContent = true;
+            foreach (var category in Model.Categories.Take(6))
+            {
+                <div class="tab-pane fade @(isFirstContent ? "active in" : "")" id="@category.CategoryName.ToLower().Replace(" ", "-").Replace(".", "").Replace("/", "").Replace("'", "")">
+                    @if (Model.Products != null && Model.Products.Any(p => p.CategoryID == category.CategoryID))
+                    {
+                        foreach (var product in Model.Products.Where(p => p.CategoryID == category.CategoryID).Take(4))
+                        {
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="~/assets/images/shop/@product.ImageUrl" alt="@product.Name" />
+                                            <h2>$@product.Price</h2>
+                                            <p>@product.Name</p>
+                                            <a href="javascript:void(0);" class="btn btn-default add-to-cart" data-product-id="@product.ProductID">
+                                                <i class="fa fa-shopping-cart"></i> Add to cart
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                isFirstContent = false;
+            }
+        }
+    </div>
+</div><!--/category-tab-->

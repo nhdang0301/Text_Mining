@@ -144,7 +144,7 @@ namespace Final_project.Controllers
 
         // Add to Cart
         [HttpPost]
-        public JsonResult AddToCart(int id)
+        public JsonResult AddToCart(int id, int quantity)
         {
             if (Session["UserID"] == null)
             {
@@ -162,14 +162,14 @@ namespace Final_project.Controllers
 
             if (cartItem != null)
             {
-                cartItem.Quantity = (cartItem.Quantity ?? 0) + 1;
+                cartItem.Quantity = (cartItem.Quantity ?? 0) + quantity; // Cập nhật số lượng
             }
             else
             {
                 cartItem = new Cart
                 {
                     ProductID = product.ProductID,
-                    Quantity = 1,
+                    Quantity = quantity, // Số lượng ban đầu
                     UserID = userId,
                     CreatedAt = DateTime.Now
                 };
@@ -179,6 +179,7 @@ namespace Final_project.Controllers
             db.SaveChanges();
             return Json(new { success = true, message = "Product added to cart!" }, JsonRequestBehavior.AllowGet);
         }
+
 
         // Hiển thị giỏ hàng
         public ActionResult Cart()

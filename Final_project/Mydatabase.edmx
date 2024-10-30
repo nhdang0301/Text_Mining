@@ -51,9 +51,14 @@
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" />
           <Property Name="OrderDate" Type="datetime" />
-          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DiscountedAmount" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="ShippingAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="ShippingFee" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -440,7 +445,6 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ShippingAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderID" FromRole="Orders" ToRole="OrderDetails" />
@@ -448,6 +452,12 @@
           <NavigationProperty Name="User" Relationship="Self.FK_Orders_UserID" FromRole="Orders" ToRole="Users" />
           <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_OrderID" FromRole="Orders" ToRole="Payment" />
           <NavigationProperty Name="Shippings" Relationship="Self.FK_Shipping_OrderID" FromRole="Orders" ToRole="Shipping" />
+          <Property Name="ReceiverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingFee" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="DiscountedAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -847,10 +857,15 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="ecommerceModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DiscountedAmount" ColumnName="DiscountedAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ShippingFee" ColumnName="ShippingFee" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
               </MappingFragment>

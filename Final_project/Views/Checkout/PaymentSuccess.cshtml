@@ -1,0 +1,36 @@
+﻿@model Final_project.Models.OrderConfirmationViewModel
+<div class="order-confirmation-page">
+        <h2>Thank You for Your Purchase!</h2>
+        <p>Your order has been successfully placed.</p>
+
+        <h4>Order Summary</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Quantity</td>
+                        <td>@String.Format("{0:C}", item.Price)</td>
+                        <td>@String.Format("{0:C}", item.Price * item.Quantity)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p><strong>Subtotal (Before Discount):</strong> @String.Format("{0:C}", Model.TotalAmount)</p>
+        <p><strong>Shipping Fee:</strong> @String.Format("{0:C}", Model.ShippingFee)</p>
+        <p><strong>Discount:</strong> @String.Format("{0:P}", Model.Discount)</p>
+        <h4>Total Payment (After Discount): @String.Format("{0:C}", Model.DiscountedAmount)</h4>
+
+        <a href="@Url.Action("DownloadInvoice", "Checkout", new { orderId = Model.Order.OrderID })" class="btn btn-primary">Download Invoice</a>
+    </div>
+

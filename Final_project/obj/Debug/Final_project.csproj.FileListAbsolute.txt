@@ -92,3 +92,7 @@ E:\Final_Project_Text_Mining\Final_project\Final_project\bin\System.Buffers.xml
 E:\Final_Project_Text_Mining\Final_project\Final_project\bin\System.Memory.xml
 E:\Final_Project_Text_Mining\Final_project\Final_project\bin\System.Numerics.Vectors.xml
 E:\Final_Project_Text_Mining\Final_project\Final_project\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\Final_Project_Text_Mining\Final_project\Final_project\bin\BouncyCastle.Cryptography.dll
+E:\Final_Project_Text_Mining\Final_project\Final_project\bin\itextsharp.dll
+E:\Final_Project_Text_Mining\Final_project\Final_project\bin\BouncyCastle.Cryptography.xml
+E:\Final_Project_Text_Mining\Final_project\Final_project\bin\itextsharp.xml

@@ -23,7 +23,12 @@ namespace Final_project
                 url: "products/page/{page}",
                 defaults: new { controller = "Product", action = "ListProductPage", page = UrlParameter.Optional }
 );
-
+            // Định nghĩa route cho sản phẩm với tên và ID trong URL
+            routes.MapRoute(
+                name: "ProductDetails",
+                url: "Product/Details/{id}/{name}",
+                defaults: new { controller = "Product", action = "Details", name = UrlParameter.Optional }
+            );
         }
     }
 }

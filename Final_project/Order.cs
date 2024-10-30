@@ -26,9 +26,14 @@ namespace Final_project
         public int OrderID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<decimal> TotalAmount { get; set; }
         public string Status { get; set; }
         public string ShippingAddress { get; set; }
+        public string ReceiverName { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<decimal> ShippingFee { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<decimal> DiscountedAmount { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

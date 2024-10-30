@@ -52,7 +52,6 @@
     <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="OrderDate" Type="DateTime" Precision="3" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ShippingAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderID" FromRole="Orders" ToRole="OrderDetails" />
@@ -60,6 +59,12 @@
     <NavigationProperty Name="User" Relationship="Self.FK_Orders_UserID" FromRole="Orders" ToRole="Users" />
     <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_OrderID" FromRole="Orders" ToRole="Payment" />
     <NavigationProperty Name="Shippings" Relationship="Self.FK_Shipping_OrderID" FromRole="Orders" ToRole="Shipping" />
+    <Property Name="ReceiverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingFee" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DiscountedAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>

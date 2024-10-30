@@ -1,0 +1,61 @@
+﻿@model Final_project.Models.CheckoutViewModel
+
+@{
+    ViewBag.Title = "Checkout";
+}
+<div class="checkout-page">
+    <h2>Checkout</h2>
+
+    <div class="checkout-info">
+        <h4>Receiver Information</h4>
+        <form method="post" action="/Checkout/PlaceOrder">
+            <div>
+                <label><strong>Name:</strong></label>
+                <input type="text" name="receiverName" class="form-control input-small" required />
+            </div>
+            <div>
+                <label><strong>Phone Number:</strong></label>
+                <input type="text" name="phoneNumber" class="form-control input-small" required />
+            </div>
+            <div>
+                <label><strong>Shipping Address:</strong></label>
+                <p>@Model.ShippingAddress</p>
+            </div>
+
+            <h4>Order Summary</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@String.Format("{0:C}", item.Price)</td>
+                            <td>@String.Format("{0:C}", item.Price * item.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h4>Total Amount: @String.Format("{0:C}", Model.TotalAmount)</h4>
+
+            <div>
+                <label><strong>Payment Method:</strong></label>
+                <select name="paymentMethod" class="form-control input-small" required>
+                    <option value="COD">Cash on Delivery (COD)</option>
+                    <option value="e-wallet">E-wallet Transfer</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    </div>
+</div>

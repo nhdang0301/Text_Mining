@@ -67,9 +67,6 @@
                                     }
                                 </li>
                                 <li>
-                                    @Html.Raw("<a href='/Checkout/Index'><i class='fa fa-credit-card'></i> Checkout</a>")
-                                </li>
-                                <li>
                                     @if (Session["UserID"] != null)
                                     {
                                         @Html.Raw("<a href='/User/Cart' id='cart-link'><i class='fa fa-shopping-cart'></i> Cart</a>")
@@ -143,31 +140,41 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-    $(document).ready(function () {
-        // Lấy giá trị từ ViewBag (server-side) sang JavaScript
-        var minPrice = @Html.Raw(ViewBag.MinPrice ?? "0");
-        var maxPrice = @Html.Raw(ViewBag.MaxPrice ?? "600");
+    // Lấy giá trị từ ViewBag và đảm bảo rằng chúng luôn là số
+    var minPriceRaw = '@ViewBag.MinPrice';
+    var maxPriceRaw = '@ViewBag.MaxPrice';
 
-        // Khởi tạo slider với giá trị minPrice và maxPrice từ server
-        $('#sl2').slider({
-            min: 0,
-            max: 600,
-            step: 5,
-            value: [minPrice, maxPrice], // Gán giá trị vào slider
-            range: true // Đảm bảo slider có dải màu đúng giữa min và max
-        }).on('slide', function (ev) {
-            // Khi slider được kéo, cập nhật các giá trị min và max
-            var values = $('#sl2').val().split(',');
-            $('#minPrice').val(values[0]);
-            $('#maxPrice').val(values[1]);
-            $('#minPriceLabel').text(values[0]);
-            $('#maxPriceLabel').text(values[1]);
-        });
+    // Chuyển đổi giá trị từ ViewBag thành số, nếu không hợp lệ thì sử dụng giá trị mặc định
+    var minPrice = (!isNaN(parseFloat(minPriceRaw)) && minPriceRaw !== '' && minPriceRaw !== 'undefined') ? parseFloat(minPriceRaw) : 0;
+    var maxPrice = (!isNaN(parseFloat(maxPriceRaw)) && maxPriceRaw !== '' && maxPriceRaw !== 'undefined') ? parseFloat(maxPriceRaw) : 2000;
 
-        // Hiển thị giá trị min và max khi trang được tải
-        $('#minPriceLabel').text(minPrice);
-        $('#maxPriceLabel').text(maxPrice);
+    // Kiểm tra giá trị trong console để đảm bảo chúng đã được gán đúng
+    console.log("MinPrice:", minPrice, "MaxPrice:", maxPrice);
+
+    // Khởi tạo slider với giá trị minPrice và maxPrice từ server
+    $('#sl2').slider({
+        min: 0,
+        max: 2000,
+        step: 5,
+        value: [minPrice, maxPrice], // Gán giá trị vào slider
+        range: true // Đảm bảo slider có dải màu đúng giữa min và max
+    }).on('slide', function (ev) {
+        // Khi slider được kéo, cập nhật các giá trị min và max
+        var values = ev.value; // Lấy giá trị trực tiếp từ sự kiện slide
+        $('#minPrice').val(values[0]);
+        $('#maxPrice').val(values[1]);
+        $('#minPriceLabel').text(values[0]);
+        $('#maxPriceLabel').text(values[1]);
     });
+
+    // Đảm bảo nhãn và giá trị đầu vào được cập nhật đúng sau khi khởi tạo slider
+    $('#minPriceLabel').text(minPrice);
+    $('#maxPriceLabel').text(maxPrice);
+    $('#minPrice').val(minPrice);
+    $('#maxPrice').val(maxPrice);
+
+    // Trigger sự kiện 'setValue' để đảm bảo slider cập nhật giá trị chính xác khi tải trang
+    $('#sl2').slider('setValue', [minPrice, maxPrice]);
     </script>
     <div id="wishlist-message" style="display:none;">Added to wishlist!</div>
     <div id="cart-message" class="cart-message" style="display:none">Product added to cart!</div>

@@ -1215,12 +1215,14 @@ h2.title {
 }
 
 .product-information {
-  border: 1px solid #F7F7F0;
-  overflow: hidden;
-  padding-bottom: 60px;
-  padding-left: 60px;
-  padding-top: 60px;
-  position: relative;
+	border: 1px solid #F7F7F0;
+	overflow: hidden;
+	padding-bottom: 60px;
+	padding-left: 50px;
+	padding-right: 5px;
+	padding-top: 60px;
+	position: relative;
+	width: 500px;
 }
 
 .newarrival{
@@ -2997,9 +2999,6 @@ ul li a.logout-button {
 .right-align {
 	float: right; /* Đẩy khối sang bên phải */
 }
-.total-price {
-	margin-right: 10px; /* Điều chỉnh khoảng cách giữa span và nút */
-}
 /* Tùy chỉnh ô input number */
 input[type="number"] {
 	width: 80px;
@@ -3034,3 +3033,528 @@ input[type="number"] {
 		outline: none; /* Ẩn viền outline mặc định */
 	}
 
+.selected-category {
+	color: #FE980F !important; /* Đổi màu chữ cho category được chọn */
+	font-weight: !important; /* Tô đậm chữ để nhấn mạnh */
+}
+
+.input-small {
+	max-width: 300px; /* Hoặc điều chỉnh thành kích thước mong muốn */
+}
+/* CSS cho Order Confirmation */
+.order-confirmation-page {
+	font-family: Arial, sans-serif;
+	background-color: #f7f9fc;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+}
+
+	.order-confirmation-page h2 {
+		color: #FF914D;
+		border-bottom: 2px solid #FF914D;
+		padding-bottom: 5px;
+	}
+
+	.order-confirmation-page .order-summary {
+		display: flex;
+		gap: 20px;
+		justify-content: space-between;
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		margin-bottom: 20px;
+	}
+
+		.order-confirmation-page .order-summary .column {
+			flex: 1;
+		}
+
+	.order-confirmation-page h4 {
+		color: #4a90e2;
+		margin-top: 0px;
+	}
+
+
+	.order-confirmation-page .order-summary p {
+		background-color: #f1f5fa;
+		padding: 10px;
+		border-radius: 5px;
+	}
+
+	.order-confirmation-page .table {
+		width: 100%;
+		margin-top: 20px;
+		border-collapse: collapse;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+		.order-confirmation-page .table th,
+		.order-confirmation-page .table td {
+			padding: 12px;
+			border-bottom: 1px solid #e0e6ed;
+			text-align: left;
+		}
+
+		.order-confirmation-page .table th {
+			background-color: #FF914D;
+			color: #fff;
+		}
+
+		.order-confirmation-page .table tbody tr:nth-child(odd) {
+			background-color: #f9fbfd;
+		}
+
+	.order-confirmation-page p strong,
+	.order-confirmation-page h4 {
+		color: #FF914D;
+	}
+
+	.order-confirmation-page .btn-success {
+		background-color: #FF914D;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+	}
+
+		.order-confirmation-page .btn-success:hover {
+			background-color: #FF7522;
+		}
+
+
+/* CSS cho Checkout */
+.checkout-page {
+	font-family: Arial, sans-serif;
+	background-color: #f7f9fc;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+}
+
+	.checkout-page h2 {
+		color: #FF914D;
+		border-bottom: 2px solid #FF914D;
+		padding-bottom: 5px;
+	}
+
+	.checkout-page .checkout-info h4 {
+		color: #FF914D;
+		margin-top: 0;
+		padding-bottom: 5px;
+	}
+
+	.checkout-page .checkout-info form {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.checkout-page .checkout-info label {
+		display: block;
+		font-weight: bold;
+		margin: 10px 0 5px;
+		color: #FF914D;
+	}
+
+	.checkout-page .checkout-info input[type="text"],
+	.checkout-page .checkout-info select {
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+	}
+
+	.checkout-page .table {
+		width: 100%;
+		margin-top: 20px;
+		border-collapse: collapse;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+		.checkout-page .table th,
+		.checkout-page .table td {
+			padding: 12px;
+			border-bottom: 1px solid #e0e6ed;
+			text-align: left;
+		}
+
+		.checkout-page .table th {
+			background-color: #FF914D;
+			color: #fff;
+		}
+
+		.checkout-page .table tbody tr:nth-child(odd) {
+			background-color: #f9fbfd;
+		}
+
+	.checkout-page .btn-primary {
+		background-color: #FF914D;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+	}
+
+		.checkout-page .btn-primary:hover {
+			background-color: #FF7522;
+		}
+
+	.checkout-page .checkout-info input[type="text"],
+	.checkout-page .checkout-info select {
+		width: 100%;
+		padding: 5px;
+		margin-bottom: 15px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		background-color: #f7f9fc;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	}
+
+		.checkout-page .checkout-info input[type="text"]:focus,
+		.checkout-page .checkout-info select:focus {
+			border-color: #4a90e2;
+			outline: none;
+			background-color: #fff;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+/* CSS cho Wishlist */
+
+
+	.wishlist-page h4 {
+		color: #FF914D;
+		border-bottom: 2px solid #FF914D;
+		padding-bottom: 5px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.wishlist-page .table-responsive {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.wishlist-page .table th,
+	.wishlist-page .table td {
+		padding: 12px;
+		border-bottom: 1px solid #e0e6ed;
+		text-align: left;
+	}
+
+	.wishlist-page .table th {
+		background-color: #FF914D;
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.wishlist-page .table tbody tr:nth-child(odd) {
+		background-color: #f9fbfd;
+	}
+
+	.wishlist-page .text-danger {
+		color: #FF4D4D;
+	}
+
+	.wishlist-page .badge {
+		padding: 8px 12px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	.wishlist-page .bg-success {
+		background-color: #4CAF50;
+		color: #fff;
+		border-radius: 5px;
+	}
+
+	.wishlist-page .add-to-cart {
+		background-color: #FF914D;
+		color: #fff;
+		border: none;
+		padding: 10px 15px;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+	}
+
+		.wishlist-page .add-to-cart:hover {
+			background-color: #e37a33;
+		}
+
+	.wishlist-page .img-thumbnail {
+		width: 50px;
+		height: auto;
+		border-radius: 5px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+/* CSS cho Shopping Cart */
+
+	.shopping-cart-page h4 {
+		color: #FF914D;
+		border-bottom: 2px solid #FF914D;
+		padding-bottom: 5px;
+		text-align: center;
+	}
+
+	.shopping-cart-page .table-responsive {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		margin-top: 20px;
+	}
+
+	.shopping-cart-page .table th,
+	.shopping-cart-page .table td {
+		padding: 12px;
+		border-bottom: 1px solid #e0e6ed;
+		text-align: left;
+	}
+
+	.shopping-cart-page .table th {
+		background-color: #FF914D;
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.shopping-cart-page .table tbody tr:nth-child(odd) {
+		background-color: #f9fbfd;
+	}
+
+	.shopping-cart-page .text-danger {
+		color: #FF914D !important;
+	}
+
+	.shopping-cart-page .form-control.quantity-input {
+		width: 80px;
+		padding: 5px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		background-color: #f7f9fc;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+		text-align: center;
+	}
+
+		.shopping-cart-page .form-control.quantity-input:focus {
+			border-color: #4a90e2;
+			outline: none;
+			background-color: #fff;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+
+
+.shopping-cart-page .total-price {
+	background-color: #fff7e6; /* Màu nền nhạt hơn để nổi bật */
+	color: #FF914D; /* Màu nổi bật */
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Viền bóng nhẹ */
+	margin-left: 65%;
+}
+
+	.shopping-cart-page .btn-success {
+		background-color: #FF914D;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+	}
+
+		.shopping-cart-page .btn-success:hover {
+			background-color: #e0722b;
+		}
+
+/* CSS cho Order Confirmation */
+.order-confirmation-page {
+	font-family: Arial, sans-serif;
+	background-color: #f7f9fc;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+}
+
+	.order-confirmation-page h2 {
+		color: #FF914D;
+		border-bottom: 2px solid #FF914D;
+		padding-bottom: 5px;
+		text-align: center;
+	}
+
+	.order-confirmation-page h4 {
+		color: #FF914D;
+		margin-top: 20px;
+		margin-bottom: 15px;
+	}
+
+	.order-confirmation-page .table {
+		width: 100%;
+		margin-top: 20px;
+		border-collapse: collapse;
+		background-color: #fff;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		border-radius: 8px;
+	}
+
+		.order-confirmation-page .table th {
+			background-color: #FF914D;
+			color: #fff;
+			padding: 12px;
+			text-align: left;
+		}
+
+		.order-confirmation-page .table td {
+			padding: 12px;
+			border-bottom: 1px solid #e0e6ed;
+		}
+
+		.order-confirmation-page .table tbody tr:nth-child(odd) {
+			background-color: #f9fbfd;
+		}
+
+	.order-confirmation-page p {
+		font-size: 16px;
+		margin: 10px 0;
+	}
+
+	.order-confirmation-page h4.total-payment {
+		color: #FF914D;
+		font-size: 20px;
+		font-weight: bold;
+		margin-top: 20px;
+	}
+
+	.order-confirmation-page .btn-primary {
+		background-color: #FF914D;
+		color: #fff;
+		border: none;
+		padding: 12px 20px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+		text-align: center;
+		display: inline-block;
+		margin-top: 20px;
+	}
+
+		.order-confirmation-page .btn-primary:hover {
+			background-color: #FF7522;
+		}
+/* Review Section CSS */
+.review-section {
+	max-width: 600px;
+	margin: 0 auto;
+	font-family: Arial, sans-serif;
+}
+
+.review-list {
+	margin-top: 20px;
+}
+
+.review-item {
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0;
+	display: flex;
+	align-items: center;
+}
+
+	.review-item img {
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		margin-right: 15px;
+	}
+
+.review-content {
+	flex: 1;
+}
+
+.star-rating-display {
+	color: #FFCC00;
+	font-size: 1.3em;
+}
+
+/* Star Rating Vote CSS */
+.star-rating {
+	font-size: 1.5em;
+	display: flex;
+	justify-content: start;
+	cursor: pointer;
+}
+
+.star {
+	color: #ccc;
+	transition: color 0.2s;
+}
+
+	.star:hover,
+	.star:hover ~ .star {
+		color: #ccc; /* Không đổi màu các sao bên phải */
+	}
+
+		.star.selected,
+		.star:hover ~ .star.selected {
+			color: #FFCC00; /* Màu vàng khi được chọn hoặc hover */
+		}
+
+/* Review Form CSS */
+.review-form textarea {
+	width: 100%;
+	margin-top: 5px;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.review-form button {
+	margin-top: 10px;
+	background-color: #28a745;
+	color: #fff;
+	border: none;
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.quantity-cart-container {
+	display: flex;
+	gap: 10px; /* Space between elements */
+}
+
+	.quantity-cart-container label {
+		margin-right: 5px;
+	}
+
+	.quantity-cart-container .add-to-cart {
+		margin-left: 10px; /* Adjust spacing as needed */
+	}
+	.quantity-cart-container label {
+		margin-top: 7px; /* Adjust this value to control the vertical position */
+		display: inline-block; /* Ensures margin is respected */
+	}

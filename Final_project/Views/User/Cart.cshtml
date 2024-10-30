@@ -3,59 +3,59 @@
 @{
     ViewBag.Title = "Shopping Cart";
 }
-
-<div class="container my-5">
-    <h4 class="text-center mb-4">Your Shopping Cart</h4>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+<div class="shopping-cart-page">
+    <div class="container my-5">
+        <h4 class="text-center mb-4">Your Shopping Cart</h4>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="~/assets/images/shop/@item.ImageUrl" alt="@item.ProductName" class="img-thumbnail me-3" style="width: 50px;">
-                                <span>@item.ProductName</span>
-                            </div>
-                        </td>
-                        <td>
-                            <span class="text-danger ms-2">€@item.Price</span>
-                        </td>
-                        <td>
-                            <input type="number" value="@item.Quantity" min="1" class="form-control quantity-input" data-product-id="@item.ProductID" data-unit-price="@item.Price" style="width: 80px;" />
-                        </td>
-                        <td>
-                            <span class="text-danger fs-4 product-total">$@(item.Price * item.Quantity)</span>
-                        </td>
-                        <td>
-                            <button class="remove-btn" onclick="removeFromCart(@item.ProductID)">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </td>
+                        <th scope="col">Item</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-between right-align">
-            <span class="text-danger fs-4 total-price">Total: $@(Model.Sum(item => item.Price * item.Quantity))</span>
-            <a href="@Url.Action("Checkout", "Order")" class="btn btn-success">Proceed to Checkout</a>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="~/assets/images/shop/@item.ImageUrl" alt="@item.ProductName" class="img-thumbnail me-3" style="width: 50px;">
+                                    <span>@item.ProductName</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="text-danger ms-2">€@item.Price</span>
+                            </td>
+                            <td>
+                                <input type="number" value="@item.Quantity" min="1" class="form-control quantity-input" data-product-id="@item.ProductID" data-unit-price="@item.Price" style="width: 80px;" />
+                            </td>
+                            <td>
+                                <span class="text-danger fs-4 product-total">$@(item.Price * item.Quantity)</span>
+                            </td>
+                            <td>
+                                <button class="remove-btn" onclick="removeFromCart(@item.ProductID)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center total-checkout">
+                <a href="@Url.Action("Checkout", "Checkout")" class="btn btn-success">Proceed to Checkout</a>
+                <span class="text-danger fs-4 total-price">Total: $@(Model.Sum(item => item.Price * item.Quantity))</span>
+            </div>
         </div>
     </div>
-</div>
-
-<script>
+    </div>
+    <script>
     function removeFromCart(productId) {
         if (confirm('Are you sure you want to remove this product from your cart?')) {
             window.location.href = '@Url.Action("RemoveFromCart", "User")' + '?id=' + productId;
         }
     }
-</script>
+    </script>

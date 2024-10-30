@@ -46,9 +46,14 @@
     <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" />
     <Property Name="OrderDate" Type="datetime" />
-    <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DiscountedAmount" Type="decimal" Precision="10" Scale="2" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="ShippingAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+    <Property Name="ShippingFee" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final_project", "Final_project\Final_project.csproj", "{63D6FDE8-55A1-487D-BBF9-4DB697B65781}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text_Mining_Admin_Controller", "Text_Mining_Admin_Controller\Text_Mining_Admin_Controller.csproj", "{AD377A97-6B1F-4506-ACCC-446378FCB218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midterm", "D:\K214162144_NguyenHaiDang_K21416C\Midterm\Midterm.csproj", "{4280354F-F3B1-4523-AC48-39B2FBFDF541}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{63D6FDE8-55A1-487D-BBF9-4DB697B65781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D6FDE8-55A1-487D-BBF9-4DB697B65781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D6FDE8-55A1-487D-BBF9-4DB697B65781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD377A97-6B1F-4506-ACCC-446378FCB218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD377A97-6B1F-4506-ACCC-446378FCB218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD377A97-6B1F-4506-ACCC-446378FCB218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD377A97-6B1F-4506-ACCC-446378FCB218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4280354F-F3B1-4523-AC48-39B2FBFDF541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4280354F-F3B1-4523-AC48-39B2FBFDF541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4280354F-F3B1-4523-AC48-39B2FBFDF541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4280354F-F3B1-4523-AC48-39B2FBFDF541}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

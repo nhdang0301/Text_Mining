@@ -126,40 +126,35 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.add-to-cart').on('click', function () {
         var productId = $(this).data('product-id');
+        var quantity = $('#quantityInput').val() || 1; // Sử dụng giá trị trong input hoặc mặc định là 1
 
         $.ajax({
-            url: '/User/AddToCart', // Đường dẫn đến phương thức AddToCart
+            url: '/User/AddToCart',
             type: 'POST',
-            data: { id: productId },
+            data: { id: productId, quantity: quantity }, // Thêm quantity vào dữ liệu gửi
             success: function (response) {
                 var message = $('#cart-message');
 
                 if (response.success) {
-                    // Hiển thị thông báo thành công
                     message.text(response.message);
-                    message.removeClass('error'); // Loại bỏ class 'error' nếu có
-                    message.addClass('success'); // Thêm class 'success' nếu thành công
+                    message.removeClass('error').addClass('success');
                 } else {
-                    // Hiển thị thông báo lỗi (ví dụ: chưa đăng nhập hoặc sản phẩm không tồn tại)
                     message.text(response.message);
-                    message.removeClass('success'); // Loại bỏ class 'success' nếu có
-                    message.addClass('error'); // Thêm class 'error' cho thông báo lỗi
+                    message.removeClass('success').addClass('error');
                 }
 
-                // Hiển thị thông báo
                 message.addClass('show');
-
-                // Ẩn thông báo sau 3 giây
                 setTimeout(function () {
                     message.removeClass('show');
                 }, 3000);
             },
-            error: function (xhr, status, error) {
+            error: function () {
                 alert('Failed to add product to cart. Please try again.');
             }
         });
     });
 });
+
 
 
 // Hàm cập nhật tổng giá cho từng sản phẩm
@@ -211,6 +206,68 @@ document.querySelectorAll('.quantity-input').forEach(input => {
         updateCartQuantity(productId, quantity);
     });
 });
+// Rating
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.querySelectorAll(".star-rating .star");
+    let selectedRating = 0; // Lưu trữ giá trị đã chọn
+
+    stars.forEach(star => {
+        star.addEventListener("click", () => {
+            selectedRating = star.getAttribute("data-value");
+            setRating(selectedRating);
+            document.getElementById("rating").value = selectedRating;
+        });
+
+        star.addEventListener("mouseover", () => {
+            const hoverValue = star.getAttribute("data-value");
+            highlightStars(hoverValue); // Tô sáng các sao khi di chuột qua
+        });
+
+        star.addEventListener("mouseout", () => {
+            highlightStars(selectedRating); // Hiển thị đúng số sao đã chọn sau khi rời chuột
+        });
+    });
+
+    function highlightStars(value) {
+        stars.forEach(star => {
+            star.classList.toggle("selected", star.getAttribute("data-value") <= value);
+        });
+    }
+
+    function setRating(value) {
+        highlightStars(value); // Gọi hàm highlightStars để cập nhật số sao được chọn
+    }
+
+    document.getElementById("reviewForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        fetch("/Product/SubmitReview", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Review submitted successfully!");
+                    // Cập nhật giao diện nếu muốn hiển thị review mới
+                } else {
+                    alert(data.message || "Failed to submit review.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
+});
+
+
+
+
+
+
+
+
+
 
 
 

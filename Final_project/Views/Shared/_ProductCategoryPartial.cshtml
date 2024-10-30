@@ -1,0 +1,29 @@
+﻿@model Final_project.Models.ProductCategoryViewModel
+
+<div class="panel-group category-products" id="accordian">
+    @if (Model.Categories != null && Model.Categories.Any())
+    {
+        foreach (var category in Model.Categories)
+        {
+            // Kiểm tra nếu category hiện tại là category được chọn
+            bool isSelected = Model.SelectedCategory == category.CategoryName;
+            string selectedClass = isSelected ? "selected-category" : "";
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="@Url.Action("FilterByPrice", "Product", new { categoryName = category.CategoryName, minPrice = Model.MinPrice, maxPrice = Model.MaxPrice })"
+                           class="category-link @selectedClass">
+                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                            @category.CategoryName
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No categories available.</p>
+    }
+</div>

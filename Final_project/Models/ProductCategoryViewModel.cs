@@ -16,5 +16,7 @@ namespace Final_project.Models
         // Lọc theo giá
         public decimal MinPrice { get; set; }
         public decimal MaxPrice { get; set; }
+        // Lọc theo Danh mục
+        public string SelectedCategory { get; set; }
     }
 }

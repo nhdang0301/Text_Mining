@@ -1,0 +1,58 @@
+﻿@model Final_project.Models.OrderConfirmationViewModel
+<div class="order-confirmation-page">
+
+    <h2>Order Confirmation</h2>
+    <p><strong>Order ID:</strong> #@Model.Order.OrderID</p>
+    <p><strong>Order Date:</strong> @Model.Order.OrderDate</p>
+
+    <div class="order-summary">
+        <div class="column">
+            <h4>Receiver Information</h4>
+            <p><strong>Name:</strong> @Model.ReceiverName</p>
+            <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+            <p><strong>Shipping Address:</strong> @Model.ShippingAddress</p>
+        </div>
+        <div class="column">
+            <h4>Payment Information</h4>
+            <p><strong>Payment Method:</strong> @Model.PaymentMethod</p>
+            <p><strong>Payment Status:</strong> @Model.PaymentStatus</p>
+        </div>
+    </div>
+
+    <h4>Order Summary</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@String.Format("{0:C}", item.Price)</td>
+                    <td>@String.Format("{0:C}", item.Price * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p><strong>Subtotal (Before Discount):</strong> @String.Format("{0:C}", Model.TotalAmount)</p>
+    <p><strong>Shipping Fee:</strong> @String.Format("{0:C}", Model.ShippingFee)</p>
+    <p><strong>Discount:</strong> @String.Format("{0:P}", Model.Discount)</p>
+    <h4>Total Payment (After Discount): @String.Format("{0:C}", Model.DiscountedAmount)</h4>
+
+    <!-- Nút Confirm Payment -->
+    @if (Model.PaymentStatus == "Pending")
+    {
+        <form method="post" action="/Checkout/ConfirmPayment">
+            <input type="hidden" name="orderId" value="@Model.Order.OrderID" />
+            <button type="submit" class="btn btn-success">Confirm Payment</button>
+        </form>
+    }
+</div>
