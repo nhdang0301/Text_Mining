@@ -14,7 +14,7 @@ namespace Final_project.Controllers
         // GET: Product
         public ActionResult Details(int id, string name)
         {
-            var product = db.Products.FirstOrDefault(p => p.ProductID == id);
+            var product = db.Products.FirstOrDefault(p => p.ProductID == id && p.IsDeleted == false);
             if (product == null)
             {
                 return HttpNotFound();
@@ -45,8 +45,6 @@ namespace Final_project.Controllers
 
             return View(model);
         }
-
-
         [HttpPost]
         public JsonResult SubmitReview(int ProductId, string Content, int Rating)
         {
@@ -93,7 +91,7 @@ namespace Final_project.Controllers
             decimal maxPriceValue = maxPrice ?? 2000;
 
             // Bắt đầu với tập sản phẩm cơ bản
-            var filteredProducts = db.Products.AsQueryable();
+            var filteredProducts = db.Products.Where(p => p.IsDeleted == false).AsQueryable();
 
             // Lọc sản phẩm theo danh mục nếu có
             if (!string.IsNullOrEmpty(categoryName))

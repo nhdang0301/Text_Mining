@@ -13,12 +13,26 @@ namespace Final_project.Controllers
         private ecommerceEntities db = new ecommerceEntities();
         public ActionResult Index()
         {
-            // Lấy 6 sản phẩm ngẫu nhiên đầu tiên
-            var top6Products = db.Products.OrderBy(p => Guid.NewGuid()).Take(6).ToList();
+            // Lấy 6 sản phẩm ngẫu nhiên đầu tiên với IsDeleted = 0
+            var top6Products = db.Products
+                                 .Where(p => p.IsDeleted == false)
+                                 .OrderBy(p => Guid.NewGuid())
+                                 .Take(6)
+                                 .ToList();
 
-            // Lấy 3 sản phẩm ngẫu nhiên khác
-            var bottom3Products = db.Products.OrderBy(p => Guid.NewGuid()).Take(3).ToList();
-            var bottom3nextProducts = db.Products.OrderBy(p => Guid.NewGuid()).Take(3).ToList();
+            // Lấy 3 sản phẩm ngẫu nhiên khác với IsDeleted = 0
+            var bottom3Products = db.Products
+                                    .Where(p => p.IsDeleted == false)
+                                    .OrderBy(p => Guid.NewGuid())
+                                    .Take(3)
+                                    .ToList();
+
+            var bottom3nextProducts = db.Products
+                                        .Where(p => p.IsDeleted == false)
+                                        .OrderBy(p => Guid.NewGuid())
+                                        .Take(3)
+                                        .ToList();
+
             // Tạo ViewModel để chứa 3 danh sách
             var model = new HomeIndexViewModel
             {
@@ -39,7 +53,7 @@ namespace Final_project.Controllers
             foreach (var category in categories.Take(6))
             {
                 var productsByCategory = db.Products
-                                           .Where(p => p.CategoryID == category.CategoryID)
+                                           .Where(p => p.CategoryID == category.CategoryID && p.IsDeleted == false)
                                            .OrderBy(p => Guid.NewGuid())
                                            .Take(4)
                                            .ToList();
@@ -72,12 +86,5 @@ namespace Final_project.Controllers
             // Trả về PartialView trực tiếp với ProductCategoryViewModel
             return PartialView("_ProductCategoryPartial", productCategoryViewModel);
         }
-
-
-
-
-
-
-
     }
 }

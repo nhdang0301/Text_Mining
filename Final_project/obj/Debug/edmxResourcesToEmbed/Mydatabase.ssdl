@@ -85,6 +85,7 @@
     <Property Name="StockQuantity" Type="int" />
     <Property Name="CreatedAt" Type="datetime" />
     <Property Name="CategoryID" Type="int" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>

@@ -104,6 +104,7 @@
     <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_CategoryID" FromRole="Products" ToRole="ProductCategory" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_ProductID" FromRole="Products" ToRole="Reviews" />
     <NavigationProperty Name="Wishlists" Relationship="Self.FK_Wishlist_ProductID" FromRole="Products" ToRole="Wishlist" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Review">
     <Key>
